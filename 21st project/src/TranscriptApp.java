@@ -38,8 +38,24 @@ public class TranscriptApp {
 		System.out.printf("%-15s %15s %20s %20s", "_ _ _ _", "_ _ _ _", "_ _ _", "_ _ _ _ _ _ _ _" + "\n" + "\n");
 		
 		
-		ArrayList<CourseEnrollment> list = new ArrayList<CourseEnrollment>();
-		list = transcript.getCourses();
+		
+		//multiple catch statements used here
+		ArrayList<CourseEnrollment> list;
+		try
+		{
+			list = transcript.getCourses();
+		}
+		catch( NullPointerException n)
+		{
+			System.out.println("null pointer exception occurred.");
+			list =  new ArrayList<CourseEnrollment>();
+		}
+		catch (Exception E)
+		{
+			System.out.println("general exception occurred");
+			list =  new ArrayList<CourseEnrollment>();
+		}
+		
 		for(CourseEnrollment cur: list)
 		{
 			
